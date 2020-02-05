@@ -5,6 +5,17 @@ const app = express();
 //static considera ./ como a pasta raiz ----- ESSA É A PONTE
 app.use(express.static('./public'));
 
+//Verbos: POST PUT GET DELETE
+
+app.get('/v1/fotos', (req, res) => {
+
+    let fotos = [
+        {_id: 1, titulo: 'Leão', url:'http://www.fundosanimais.com/Minis/leoes.jpg' },
+        {_id: 2, titulo: 'Leão 2', url:'http://www.fundosanimais.com/Minis/leoes.jpg' }
+    ];
+    res.json(fotos);
+});
+
 module.exports = app;
 
 /* 
