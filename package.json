@@ -1,0 +1,23 @@
+{
+  "name": "curso-mean",
+  "version": "1.0.0",
+  "description": "alurapic",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matheusmendes1/Curso-Mean.git"
+  },
+  "author": "Matheus Santos",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/matheusmendes1/Curso-Mean/issues"
+  },
+  "homepage": "https://github.com/matheusmendes1/Curso-Mean#readme",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}

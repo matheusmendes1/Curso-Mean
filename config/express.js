@@ -1,0 +1,45 @@
+// módulo de configuração do express
+const express = require('express');
+const app = express();
+
+//static considera ./ como a pasta raiz ----- ESSA É A PONTE
+app.use(express.static('./public'));
+
+module.exports = app;
+
+/* 
+    Por uma questão de organização, o código que levanta nosso servidor deve ficar na raiz do nosso projeto utilizando o nome alurapic/server.js. 
+    Poderia ser qualquer nome de arquivo, mas o nome server.js deixa claro para outros programadores que tudo o que estiver codificado dentro dele 
+    diz respeito ao nosso servidor. E o termo raiz do projeto, lembra o que significa? Ele é sinônimo da pasta principal da nossa aplicação, 
+    onde tudo começa, a pasta alurapic. É por isso dizemos que server.js está dentro da pasta raiz.
+
+    Aprendemos também que a instalação da plataforma Node.js disponibiliza um "monte de código pronto" que podemos usar. 
+    Inclusive chamamos esse "monte de código pronto" de módulos. Cada módulo é uma unidade de código especializada, 
+    destinado a responder uma tarefa específica. Podemos combinar vários módulos entre si para construirmos uma aplicação mais complexa, é como brincar de lego.
+    
+    No início do nosso projeto, precisamos daquele módulo que sabe criar um servidor http e a plataforma Node.js já vem com um módulo por padrão 
+    com esta finalidade, o módulo http. Módulos não são carregados automaticamente e devem ser requeridos em nosso código, 
+    em nosso caso, alurapic/server.js. Fazemos isso através da função require que recebe como parâmetro o nome do módulo. 
+    Em nosso caso, para importarmos o módulo http, fazemos require('http').
+
+    E para levantar nosso servidor? Dentro da pasta raiz do projeto (cuidado redobrado quando você abrir seu terminal, 
+    verifique se está dentro da pasta alurapic) usamos o comando node server ou node server.js. Eu prefiro a primeira forma, porque escrevo menos.
+
+    Temos as seguintes afirmativas sobre o Express:
+    A) O módulo Express não vem por padrão com o Node.js e deve ser baixado pelo gerenciador de pacotes do Node, o npm.
+    B) Instalamos o Express no terminal com o comando npm install express ou npm install express --save.
+    C) O Express nada mais é do que um módulo que aplica uma série de middlewares que processam nossas requisições.
+    D) O Express é um framework web criado por TJ Hollowaychuck, uma lenda da comunidade open source. 
+    Mesmo tão novo na época do lançamento do Express, contribuiu muito mais do que muito programador sexagenário para o mundo open source.
+
+    npm install express@4.13.3 --save
+
+    Você viu neste capítulo o emblemático arquivo package.json. Sobre ele, temos as seguintes afirmativas:
+    A) Pode ou não ser criado através do terminal pelo comando npm init.
+    B) Guarda as dependências de produção e desenvolvimento.
+    C) Seu uso é opcional em um projeto Node.
+    D) Sua estrutura nada mais é que uma estrutura JSON
+
+    É possível remover dependências do package.json ao mesmo tempo apagando sua respectiva pasta em node_modules. Basta usar o comando 
+    npm uninstall nomeDoModulo --save. É necessário usar o --save, caso contrário o módulo continuará no package.json.
+*/
