@@ -1,10 +1,16 @@
 // módulo de configuração do express
 const express = require('express');
 const app = express();
+
 const consign = require('consign');
+const bodyParser = require('body-parser');
 
 //static considera ./ como a pasta raiz ----- ESSA É A PONTE
 app.use(express.static('./public'));
+
+/* ATIVAR O BODY PARSER ANTES DAS ROTAS COM O CONSIGN*/
+
+app.use(bodyParser.json());
 
 consign( {cwd: 'app' })
     .include('api')
@@ -59,4 +65,9 @@ module.exports = app;
 
     Posso te contar um segredo? A função res.json também envia um código de status para nós, o 200.
     Então, no final, sempre acabamos enviando um código de status para o navegador com alguma outra informação ou só o código de status.
+
+    O problema é que ninguém adicionou o JSON enviado convertido para objeto na propriedade req.body. Precisamos pedir que o Express faça isso 
+    para nós através de um middleware, isto é, alguém que filtrará nossas requisições e quando achar um JSON no corpo da mensagem o converterá para objeto Javascript
+    e o armazenará na propriedade req.body. O middleware que faz isso é o body-parser. Sua instalação é feita no terminal através do npm:
+    npm install body-parser@1.14.1 --save
 */
