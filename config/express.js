@@ -1,20 +1,18 @@
 // módulo de configuração do express
 const express = require('express');
 const app = express();
+const consign = require('consign');
 
 //static considera ./ como a pasta raiz ----- ESSA É A PONTE
 app.use(express.static('./public'));
 
-//Verbos: POST PUT GET DELETE
+consign( {cwd: 'app' })
+    .include('api')
+    .then('routes')
+    .into(app);
 
-app.get('/v1/fotos', (req, res) => {
-
-    let fotos = [
-        {_id: 1, titulo: 'Leão', url:'http://www.fundosanimais.com/Minis/leoes.jpg' },
-        {_id: 2, titulo: 'Leão 2', url:'http://www.fundosanimais.com/Minis/leoes.jpg' }
-    ];
-    res.json(fotos);
-});
+require('../app/routes/foto')(app);
+require('../app/routes/grupo')(app);
 
 module.exports = app;
 
