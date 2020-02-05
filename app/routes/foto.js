@@ -5,6 +5,8 @@ module.exports = (app) => {
 
     app.get('/v1/fotos', api.lista);
 
-    /* rota generica do tipo get recebendo um coringa */
-    app.get("/v1/fotos/:id", api.buscaPorId);
+    app
+        .route('/v1/fotos/:id')
+        .get(api.buscaPorId)
+        .delete(api.removePorId);
 }

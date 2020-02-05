@@ -51,4 +51,12 @@ module.exports = app;
 
     É possível remover dependências do package.json ao mesmo tempo apagando sua respectiva pasta em node_modules. Basta usar o comando 
     npm uninstall nomeDoModulo --save. É necessário usar o --save, caso contrário o módulo continuará no package.json.
+
+    404 = devolvido pelo servidor quando um arquivo não é encontrado
+    500 = quando seu servidor explode com um erro bizarro e você quer dizer que alguém ficará na mão
+    200 = quando uma operação é realizada com sucesso, geralmente é enviado com alguma informação
+    401 = quando alguém não tem autorização para acessar determinado recurso
+
+    Posso te contar um segredo? A função res.json também envia um código de status para nós, o 200.
+    Então, no final, sempre acabamos enviando um código de status para o navegador com alguma outra informação ou só o código de status.
 */
