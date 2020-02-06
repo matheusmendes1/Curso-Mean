@@ -113,4 +113,18 @@ module.exports = app;
     Aprendemos que o Mongoose trabalha com schemas e modelos. Temos as seguintes afirmativas a respeito dessas duas estruturas fornecidas pelo Mongoose:
     B) Compilamos modelos a partir de esquemas e usamos esses modelos para interagirmos efetivamente com o banco.
     C) Quando compilamos um modelo fornecendo seu nome, o Mongoose adotará por padrão como nome da collection o nome do modelo no plural.
+
+    Usamos model.findById e como o nome já diz, queremos procurar por ID. É por isso que a função recebe o ID que desejamos procurar. 
+    Lembra de onde vem esse ID? Enviado pela aplicação Angular. Lembra como pegamos esse id? Através de req.params.id.
+
+    A função model.remove não recebe diretamente o ID da foto que desejamos remover. Precisamos passar como primeiro parâmetro um objeto 
+    (um query object, para usar o termo mais correto) que contenha a chave e o valor da propriedade que utilizaremos como critério de consulta. 
+    O restante é igualzinho ao que já vimos. Mas atenção: sua função success, mesmo que você só queira apagar e não fazer mais nada, 
+    ainda precisa devolver uma resposta. Lembre-se que podemos devolver código de status como resposta e 
+    não necessariamente dados na estrutura JSON ou texto.
+
+    Lembre-se que a função create recebe um JSON. Obtemos o JSON com os dados da foto enviado através de req.body e não req.params.body.
+
+    O mais importante é lembrar que o primeiro parâmetro da função findByIdAndUpdate é o ID do 
+    documento que queremos atualizar e o segundo os dados que serão atualizados.
 */
