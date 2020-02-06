@@ -70,4 +70,36 @@ module.exports = app;
     para nós através de um middleware, isto é, alguém que filtrará nossas requisições e quando achar um JSON no corpo da mensagem o converterá para objeto Javascript
     e o armazenará na propriedade req.body. O middleware que faz isso é o body-parser. Sua instalação é feita no terminal através do npm:
     npm install body-parser@1.14.1 --save
+
+    O MongoDB é um banco noSQL orientado a documento que armazena seus dados em uma estrutura de dados extremamente parecida com 
+    JSON e dependendo da maneira que interagimos com esse banco através do nosso código no backend podemos tratá-lo como tal. 
+    Dentro desse contexto, gravaremos nossos dados no formato "JSON", leremos através da nossa aplicação Node.js esse dado que será 
+    enviado diretamente para nossa aplicação Angular que entende com facilidade essa estrutura. Repare que durante esse trâmite 
+    não gastaremos tempo lidando com conversões, inclusive quando formos atualizar os dados, enviaremos o JSON atualizado que será recebido 
+    pelo backend e que será gravado diretamente no banco! Perfeito. No final das contas, nossa aplicação terá menor impedância, que é a discrepância 
+    das estrutura de dados do banco e essa estrutura de dados em memória.
+
+    npm install mongoose@4.3.1 --save
+
+    Impedância é o desencontro entre a estrutura dos dados armazenada no banco de dados e a estrutura de dados em memória. 
+    Quanto maior for a impedância, mais trabalho o desenvolvedor gastará em conversões entre os dois mundos. 
+    O contrário também é verdadeiro, quanto menor a impedância, menos trabalho ele terá. Na MEAN Stack, há a onipresença de uma estrutura de dados 
+    utilizada de ponta a ponta, o JSON. Mas Flávio, o MongoDB usa BSON (Binary JSON), você deve estar se perguntando. 
+    Sim, meu aluno, porém você verá que sob o ponto de vista do programador, podemos a grosso modo pensar no BSON como um JSON que possui apenas mais tipos.
+
+    Temos as seguintes afirmativas sob o MongoDB:
+    A) O MongoDB é um banco de dados baseado em documento com alta performance, disponibilidade e fácil escalabilidade. 
+    Porém, muito pouco ele faz para validar documentos, deixando esse quesito sob responsabilidade da aplicação, logo, do programador.
+
+    B) Um documento no MongoDB não segue a estrutura tabular e relacional como em bancos de dados relacionais. 
+    A estrutura de dados de um documento é muito semelhante ao JSON, um dos motivos que o torna atrativo para a MEAN Stack.
+
+    C) Existem módulos criados pela comunidade para facilitar a conexão e manipulação de documentos do MongoDB na plataforma Node.js, como o Mongoose.
+
+    D) MongoDB é multiplataforma, por isso pode ser instalado no Windows, Linux e OSX.
+
+    Com o Mongoose, criamos esquemas no lado da aplicação que visam suprir a ausência de esquema no MongoDB. 
+    Pense nesses esquemas como esquemas de um banco de dados relacional (não pode aceitar vazio, tem que aceitar apenas texto ou número). 
+    A partir desses esquemas são compilados modelos e estes sim são os responsáveis em realizar operações de persistência no banco de dados. 
+    Toda a complexidade do driver do MongoDB é encapsulada em todo esse processo, facilitando em muito a vida do desenvolvedor.
 */
