@@ -13,7 +13,8 @@ app.use(express.static('./public'));
 app.use(bodyParser.json());
 
 consign( {cwd: 'app' })
-    .include('api')
+    .include('models')
+    .then('api')
     .then('routes')
     .into(app);
 
@@ -102,4 +103,14 @@ module.exports = app;
     Pense nesses esquemas como esquemas de um banco de dados relacional (não pode aceitar vazio, tem que aceitar apenas texto ou número). 
     A partir desses esquemas são compilados modelos e estes sim são os responsáveis em realizar operações de persistência no banco de dados. 
     Toda a complexidade do driver do MongoDB é encapsulada em todo esse processo, facilitando em muito a vida do desenvolvedor.
+
+    O MongoDB trabalha com o conceito de documento. Dentro desse contexto, podemos afirmar que no MongoDB:
+    A) Um documento é uma estrutura muito semelhante ao JSON, com a diferença de que possui mais tipos.
+    B) Para agrupar documentos, é utilizado coleções (collections), que são análogas as tabelas de um banco de dados relacional.
+    C) Dentro de uma collection, podemos salvar documentos com estrutura diferentes.
+    D) Documentos são gravados na estrutura BSON
+
+    Aprendemos que o Mongoose trabalha com schemas e modelos. Temos as seguintes afirmativas a respeito dessas duas estruturas fornecidas pelo Mongoose:
+    B) Compilamos modelos a partir de esquemas e usamos esses modelos para interagirmos efetivamente com o banco.
+    C) Quando compilamos um modelo fornecendo seu nome, o Mongoose adotará por padrão como nome da collection o nome do modelo no plural.
 */

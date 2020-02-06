@@ -1,55 +1,39 @@
-let api = {};
-let contador = 2;
-
-let fotos = [
-    {_id: 1, titulo: 'Leão', url:'http://www.fundosanimais.com/Minis/leoes.jpg' },
-    {_id: 2, titulo: 'Leão 2', url:'http://www.fundosanimais.com/Minis/leoes.jpg' }
-];
+const mongoose = require('mongoose');
+const api = {};
 
 api.lista = (req, res) => {
-    res.json(fotos);
-}
+
+    /* Mesmo nome do model criado em foto.js de models */
+    let model = mongoose.model('Foto');
+
+    model
+        .find({})
+        .then((fotos) => {
+            res.json(fotos);
+        }),
+        ((error) => {
+            console.log(error);
+            res.status(500).json(error);
+        })
+};
 
 api.buscaPorId = (req, res) => {
 
-    let foto = fotos.find((foto) => {
-        return foto._id = req.params.id;
-    });
-
-    res.json(foto);
+    
 };
 
 api.removePorId = (req, res) => {
 
-    fotos.filter((foto) => {
-        return foto._id != req.params.id;
-    })
 
-    res.sendStatus(204);
 };
 
 api.adiciona = (req, res) => {
 
-    let foto = req.body;
-    foto._id = ++contador;
-
-    fotos.push(foto);
-
-    res.json(foto);
 };
 
 api.atualiza = (req, res) => {
 
-    let foto = req.body;
-    let fotoId = req.params.id;
 
-    let indice = fotos.findIndex((foto) => {
-        return foto._id == fotoId;
-    })
-
-    fotos[indice] = foto;
-
-    res.sendStatus(200);
 }
 
 module.exports = api;
