@@ -16,6 +16,10 @@ angular.module('alurapic', ['minhasDiretivas','ngAnimate', 'ngRoute', 'ngResourc
 			controller: 'FotoController'
 		});
 
+		$routeProvider.when('/login', {
+			templateUrl: 'partials/login.html',
+			controller: 'LoginController'
+		})
 		$routeProvider.otherwise({redirectTo: '/fotos'});
 
 	});

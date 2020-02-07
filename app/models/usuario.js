@@ -2,19 +2,15 @@ const mongoose = require('mongoose');
 
 const schema = mongoose.Schema({
     
-    titulo: { 
+    login: { 
         type: String,
         required: true
     },
-    url: {
+    senha: {
         type: String,
-        required: true
-    },
-    grupo: {
-        type: Number,
         required: true
     }
 
 });
 
-mongoose.model('Foto', schema);
+mongoose.model('Usuario', schema);

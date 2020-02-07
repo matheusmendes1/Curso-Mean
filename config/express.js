@@ -15,6 +15,7 @@ app.use(bodyParser.json());
 consign( {cwd: 'app' })
     .include('models')
     .then('api')
+    .then('router/auth.js') // garantindo que esse módulo vai ser carregado primeiro
     .then('routes')
     .into(app);
 
@@ -127,4 +128,8 @@ module.exports = app;
 
     O mais importante é lembrar que o primeiro parâmetro da função findByIdAndUpdate é o ID do 
     documento que queremos atualizar e o segundo os dados que serão atualizados.
+
+    Json Web Token -> https://tools.ietf.org/html/rfc7519
+
+    npm install jsonwebtoken@5.4.1 --save 
 */
