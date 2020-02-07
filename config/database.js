@@ -3,7 +3,7 @@ module.exports = function(uri){
     let mongoose = require('mongoose');
     
     mongoose
-        .connect(`mongodb://${uri}`)
+        .connect(uri)
         .connection
         .on('connected', () => {
             console.log('Conectado ao mongodb');

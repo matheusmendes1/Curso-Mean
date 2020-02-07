@@ -5,6 +5,8 @@ const app = express();
 const consign = require('consign');
 const bodyParser = require('body-parser');
 
+app.set('secret', 'homemavestruz'); 
+
 //static considera ./ como a pasta raiz ----- ESSA É A PONTE
 app.use(express.static('./public'));
 
@@ -15,7 +17,7 @@ app.use(bodyParser.json());
 consign( {cwd: 'app' })
     .include('models')
     .then('api')
-    .then('router/auth.js') // garantindo que esse módulo vai ser carregado primeiro
+    .then('routes/auth.js') // garantindo que esse módulo vai ser carregado primeiro
     .then('routes')
     .into(app);
 
@@ -132,4 +134,10 @@ module.exports = app;
     Json Web Token -> https://tools.ietf.org/html/rfc7519
 
     npm install jsonwebtoken@5.4.1 --save 
+
+    Temos as seguintes afirmações sobre o JWT:
+    A) JWT (JSON Web Token) é um padrão aberto que define de maneira compacta e auto-contida uma maneira de transmitir informações entre partes interessadas através de um objeto JSON.
+    B) A informação transferida através do JWT pode ser verificada e confiável porque é assinada digitalmente.
+    C) A instalação do Node.js padrão não possui nenhum módulo que nos ajude na criação de JWT's.
+    D) JWT pode ser assinado com uma frase secreta, que não deve ser compartilhada.
 */

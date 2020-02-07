@@ -1,7 +1,7 @@
 const http = require('http');
 const app = require('./config/express');
 
-require('./config/database')('localhost/alurapic');
+require('./config/database')('mongodb://localhost/alurapic');
 
 http
     .createServer(app)
